@@ -9,12 +9,13 @@
 
 document.getElementById('btn-deposit').addEventListener('click',function(){
 
-    let currentDepositAmount = parseInt(document.getElementById('deposit-field').value);
+    let currentDepositAmount = parseFloat(document.getElementById('deposit-field').value);
+    
 
     if(currentDepositAmount > 0){
         console.log(currentDepositAmount);
 
-        let totalDepositAmount = parseInt(document.getElementById('total-deposit').innerText);
+        let totalDepositAmount = parseFloat(document.getElementById('total-deposit').innerText);
 
         console.log(totalDepositAmount);
 
@@ -22,11 +23,11 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
 
         console.log(total);
 
-        document.getElementById('total-deposit').innerText = parseInt(total);
+        document.getElementById('total-deposit').innerText = parseFloat(total);
 
         const totalBalance = document.getElementById('total-balance');
 
-        let totalBalanceAmount = parseInt(totalBalance.innerText);
+        let totalBalanceAmount = parseFloat(totalBalance.innerText);
 
         totalBalanceAmount = totalBalanceAmount + currentDepositAmount;
 
@@ -49,14 +50,14 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
 
 document.getElementById('btn-withdraw').addEventListener('click',function(){
     const withdrawField = document.getElementById('withdraw-field');
-    const withdrawAmount = parseInt(withdrawField.value);
+    const withdrawAmount = parseFloat(withdrawField.value);
 
     console.log(withdrawAmount);
-    let totalBalance = parseInt(document.getElementById('total-balance').innerText);
+    let totalBalance = parseFloat(document.getElementById('total-balance').innerText);
 
     if(withdrawAmount > 1 && withdrawAmount < totalBalance)
     {
-        let withdrawTotal = parseInt(document.getElementById('total-withdraw').innerText);
+        let withdrawTotal = parseFloat(document.getElementById('total-withdraw').innerText);
 
         console.log(withdrawTotal);
 
