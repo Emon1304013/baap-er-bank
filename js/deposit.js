@@ -48,5 +48,43 @@ document.getElementById('btn-deposit').addEventListener('click',function(){
 //step#5: subtract current withdraw amount from total balance and update total balance
 
 document.getElementById('btn-withdraw').addEventListener('click',function(){
+    const withdrawField = document.getElementById('withdraw-field');
+    const withdrawAmount = parseInt(withdrawField.value);
+
+    console.log(withdrawAmount);
+    let totalBalance = parseInt(document.getElementById('total-balance').innerText);
+
+    if(withdrawAmount > 1 && withdrawAmount < totalBalance)
+    {
+        let withdrawTotal = parseInt(document.getElementById('total-withdraw').innerText);
+
+        console.log(withdrawTotal);
+
+        console.log(withdrawAmount);
+        
+        const total = withdrawTotal + withdrawAmount;
+
+        console.log(total);
+
+        document.getElementById('total-withdraw').innerText = total;
+
+        totalBalance = totalBalance - withdrawAmount;
+
+        document.getElementById('total-balance').innerText = totalBalance;
+        
+
+    }
+    else{
+        if(withdrawAmount < 1){
+            alert("Sorry! You can't withdraw less than $1");
+        }
+        else if(withdrawAmount >= totalBalance)
+        {
+            alert("Sorry! Insufficient Balance");
+        }
+    }
+
+    document.getElementById('withdraw-field').value = '';
+
 
 })
