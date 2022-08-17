@@ -8,29 +8,46 @@
 //step#5: subtract current withdraw amount from total balance and update total balance
 
 document.getElementById('btn-withdraw').addEventListener('click',function(){
-    const withdrawField = document.getElementById('withdraw-field');
-    const withdrawAmount = parseFloat(withdrawField.value);
+    // const withdrawField = document.getElementById('withdraw-field');
+    // const withdrawAmount = parseFloat(withdrawField.value);
 
-    console.log(withdrawAmount);
-    let totalBalance = parseFloat(document.getElementById('total-balance').innerText);
+    const currentWithdrawAmount =  getInputFieldValueById('withdraw-field');
 
-    if(withdrawAmount > 1 && withdrawAmount < totalBalance)
+
+    // let totalBalance = parseFloat(document.getElementById('total-balance').innerText);
+
+    const previousTotalBalanceAmount = getElementValueById('total-balance');
+
+
+    
+    if(currentWithdrawAmount > 1 && currentWithdrawAmount < previousTotalBalanceAmount)
     {
-        let withdrawTotal = parseFloat(document.getElementById('total-withdraw').innerText);
+        // let withdrawTotal = parseFloat(document.getElementById('total-withdraw').innerText);
 
-        console.log(withdrawTotal);
+        const previousWithdrawTotal = getElementValueById('total-withdraw');//function to get previous withdraw total amount
 
-        console.log(withdrawAmount);
+
+
+
+        // console.log(withdrawTotal);
+
+        // console.log(withdrawAmount);
         
-        const total = withdrawTotal + withdrawAmount;
+        const newWithdrawTotal = previousWithdrawTotal + currentWithdrawAmount;
 
-        console.log(total);
+        // console.log(total);
 
-        document.getElementById('total-withdraw').innerText = total;
+        // document.getElementById('total-withdraw').innerText = total;
 
-        totalBalance = totalBalance - withdrawAmount;
+        setElementValueById('total-withdraw',newWithdrawTotal);//function to set new total withdraw amount
 
-        document.getElementById('total-balance').innerText = totalBalance;
+
+
+        newTotalBalance = previousTotalBalanceAmount - currentWithdrawAmount;//function to get new total balance after withdrawal
+
+        // document.getElementById('total-balance').innerText = newTotalBalance;
+
+        setElementValueById('total-balance',newTotalBalance);//function to set newTotal Balance after withdrawal
         
 
     }
@@ -43,8 +60,6 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
             alert("Sorry! Insufficient Balance");
         }
     }
-
-    document.getElementById('withdraw-field').value = '';
 
 
 })

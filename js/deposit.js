@@ -1,6 +1,4 @@
 // Case Deposit 
-
-
 //step#1: Deposit button event listener
 //step#2: Collect amount from deposit field
 //step#3: Collect amount from current total deposit
@@ -9,31 +7,38 @@
 
 document.getElementById('btn-deposit').addEventListener('click',function(){
 
-    let currentDepositAmount = parseFloat(document.getElementById('deposit-field').value);
+    // let newDepositAmount = parseFloat(document.getElementById('deposit-field').value);
+    const newDepositAmount = getInputFieldValueById('deposit-field');//FUCNCTION FOR GETTING DEPOSIT INPUT
     
+    if(newDepositAmount > 0 && typeof(newDepositAmount) === 'number'){
+    
+        // let previousTotalDepositAmount = parseFloat(document.getElementById('total-deposit').innerText);
 
-    if(currentDepositAmount > 0){
-        console.log(currentDepositAmount);
+        const previousTotalDepositAmount = getElementValueById('total-deposit');//FUNCTION FOR GETTING PREVIOUS TOTAL DEPOSIT
 
-        let totalDepositAmount = parseFloat(document.getElementById('total-deposit').innerText);
+        // console.log(previousTotalDepositAmount);
 
-        console.log(totalDepositAmount);
+        const newTotalDepositAmountTotal = parseFloat(previousTotalDepositAmount + newDepositAmount)
 
-        const total = totalDepositAmount + currentDepositAmount;
 
-        console.log(total);
+        // document.getElementById('total-deposit').innerText = newTotalDepositAmountTotal;
 
-        document.getElementById('total-deposit').innerText = parseFloat(total);
+        setElementValueById('total-deposit',newTotalDepositAmountTotal);//FUNCTION FOR SETTING THE NEW TOTAL DEPOSIT VALUE
 
-        const totalBalance = document.getElementById('total-balance');
 
-        let totalBalanceAmount = parseFloat(totalBalance.innerText);
+        // const totalBalance = document.getElementById('total-balance');
 
-        totalBalanceAmount = totalBalanceAmount + currentDepositAmount;
+        // let totalBalanceAmount = parseFloat(totalBalance.innerText);
 
-        totalBalance.innerText = totalBalanceAmount;
+        const previousTotalBalance = getElementValueById('total-balance');//function to get previous total balance 
 
-        document.getElementById('deposit-field').value = '';      
+        const totalBalanceAmount = previousTotalBalance + newDepositAmount;
+
+        // totalBalance.innerText = totalBalanceAmount;
+
+        setElementValueById('total-balance',totalBalanceAmount);//function to set the total balance after deposit
+
+        // document.getElementById('deposit-field').value = '';      
     }
     else{
         alert("Please input a valid number");
