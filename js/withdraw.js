@@ -52,13 +52,15 @@ document.getElementById('btn-withdraw').addEventListener('click',function(){
 
     }
     else{
-        if(withdrawAmount < 1){
-            alert("Sorry! You can't withdraw less than $1");
-        }
-        else if(withdrawAmount >= totalBalance)
-        {
-            alert("Sorry! Insufficient Balance");
-        }
+        // if(withdrawAmount < 1){
+        //     alert("Sorry! You can't withdraw less than $1");
+        // }
+        // else if(withdrawAmount >= totalBalance)
+        // {
+        //     alert("Sorry! Insufficient Balance");
+        // }
+
+        alert("Sorry! Insufficient Balance");
     }
 
 
